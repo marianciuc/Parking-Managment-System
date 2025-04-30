@@ -1,0 +1,25 @@
+
+@media(max-width:700px) {
+    .nav__list{
+        display:none;
+        position:absolute;
+        flex-direction: column;
+        background-color:rgb(237,168,168);
+        width: 100%;
+        height: max-content;
+        justify-content:flex-start;
+        align-items: flex-start;
+        padding: 10px;
+        margin-top: 110px;
+        border-radius: 20px;
+    }
+    .footer__container{
+    gap:54.65px;
+    }
+    #hamburger{
+        display:flex;
+        margin:10px;
+        padding:20px;
+    }
+
+}

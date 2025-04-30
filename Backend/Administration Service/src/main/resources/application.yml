@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: ${SPRING_APPLICATION_NAME:admin-service}
+  config:
+    import: optional:configserver:${SPRING_CONFIG_SERVER_URL:http://localhost:8888}
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_HOST:localhost}:${SPRING_KAFKA_PORT:9092}
+server:
+  port: ${SPRING_PORT:8022}

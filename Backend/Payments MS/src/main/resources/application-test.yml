@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: ${SPRING_APPLICATION_NAME:payment-service}
+  config:
+    import: optional:configserver:${SPRING_CONFIG_SERVER_URL:http://localhost:8888}
+  datasource:
+    url: jdbc:postgresql://${SPRING_DB_HOST:localhost}:${SPRING_DB_PORT:5432}/payments_db
+    driver-class-name: org.postgresql.Driver
+    username: ${SPRING_DB_USERNAME:root}
+    password: ${SPRING_DB_PASSWORD:root}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    baseline-description: "init"
+    baseline-version: 0
+    user: ${SPRING_DB_USERNAME:root}
+    password: ${SPRING_DB_PASSWORD:root}
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_HOST:localhost}:${SPRING_KAFKA_PORT:9092}
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: payments-group
+      properties:
+        spring.json.type.mapping: |
+          createdUserMessage:pl.edu.zut.app.parking.payments_ms.kafka.messages.CreatedUserMessage,
+          createdDriverMessage:pl.edu.zut.app.parking.payments_ms.kafka.messages.CreatedDriverMessage
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: changeCurrencyMessage:pl.edu.zut.app.parking.payments_ms.kafka.messages.ChangeCurrencyMessage,sessionPaymentMessage:pl.edu.zut.app.parking.payments_ms.kafka.messages.SessionPaymentMessage
+
+stripe:
+  webhook:
+    secret: ${STRIPE_WEBHOOK:"webhook"}
+  api:
+    key: ${STRIPE_SECRET_KEY:"sk"}
+    public-key: ${STRIPE_PUBLIC_KEY:"pk"}
+org:
+  openexchangerates:
+    app_id: ${EXCHANGE_APP_ID:"app_id"}
+    url: https://openexchangerates.org/api/latest.json
+server:
+  port: ${SPRING_PORT:8022}

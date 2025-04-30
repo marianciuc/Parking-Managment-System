@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: ${SPRING_APPLICATION_NAME:payment-service}
+  config:
+    import: optional:configserver:${SPRING_CONFIG_SERVER_URL:http://localhost:8888}
+
+stripe:
+  webhook:
+    secret: ${STRIPE_WEBHOOK:"webhook"}
+  api:
+    key: ${STRIPE_SECRET_KEY:"sk"}
+    public-key: ${STRIPE_PUBLIC_KEY:"pk"}
+org:
+  openexchangerates:
+    app_id: ${EXCHANGE_APP_ID:"app_id"}
+    url: https://openexchangerates.org/api/latest.json
+server:
+  port: ${SPRING_PORT:8064}

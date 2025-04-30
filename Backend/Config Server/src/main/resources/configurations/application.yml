@@ -1,0 +1,33 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: ${SPRING_EUREKA_SERVICE_HOST:localhost}
+    instance-id: ${spring.application.name}:${SPRING_APPLICATION_NAME:localhost}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://${SPRING_EUREKA_SERVICE_HOST:localhost}:${SPRING_EUREKA_SERVICE_PORT:8761}/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+spring:
+  zipkin:
+    base-url: ${ZIPKIN_URL:http://localhost}:${ZIPKIN_PORT:9411}
+  sleuth:
+    sampler:
+      probability: 1.0
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST:localhost}
+      port: ${SPRING_REDIS_PORT:6379}
+  cloud:
+    config:
+      override.system-properties: true
+
+management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_URL:http://localhost}:${ZIPKIN_PORT:9411}/api/v2/spans
+    sampling:
+      probability: 1.0
+  tracing:
+    sampling:
+      probability: 1.0

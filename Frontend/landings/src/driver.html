@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking app</title>
+    <!-- <link rel="stylesheet" href="./styles/output.css"/> -->
+    <link rel="stylesheet" href="./styles/driver.css"/>
+    <link rel="icon" type="image/svg+xml" href="./images/logo_black.svg"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="header__container">
+            <div class="logo"><img src="./images/logo_text_blue.svg" alt="Logo"></div>
+            <nav>
+                <ul>
+                    <li><button onclick="scrollToElementWithMargin('promo','180')">Home</button></li>
+                    <li><button onclick="scrollToElementWithMargin('about_app','180')">About app</button></li>
+                    <li><button onclick="scrollToElementWithMargin('features','180')">Features</button></li>
+                    <li><button onclick="scrollToElementWithMargin('faq','180')">FAQ</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="main__container">
+            <div class="promo" id="promo">
+                <div class="promo_left_side">
+                    <h1>Find Parking Effortlessly with HandyParking</h1>
+                    <p>Our mobile parking app is designed to make parking effortless and efficient. Save time, reduce stress, and take control of your parking experience today</p>
+                    <div class="promo_images">
+                        <img src="./images/Google Play.png" alt="Google Play"><img src="./images/App Store.png" alt="Appstore">
+                    </div>
+                    <div class="promo_or"><p>or</p>
+                    <button class="promo_web_application"><img src="./images/internet-svgrepo-com.svg" alt="internet"><span>Use Web Application</span></button>
+                    </div>
+                    <div class="promo_check_reviews">
+                        <p>10,000+ users already don't have problems with parking</p>
+                        <button class="check_our_reviews standard_button">
+                            <span>Check our reviews</span>
+                            <img src="./images/Vector 19.png" alt="right-arrow">
+                        </button>
+                    </div>
+                </div>
+                <div class="promo_right_side ">
+                    <div class="background_promo"></div>
+                    <img src="./images/iphone.png" alt="Demo Phone">
+
+                </div>
+                <img src="./images/Group 116.png" alt="background" class="back_image">
+            </div>
+            <div class="about_us block tag" id="about_app">
+                <div class="first_block">
+                    <span>About app</span>
+                </div>
+                <div class="about_us_main">
+                    <div class="about_us_left_side tag">
+                        <img src="./images/iphone (2).png" alt="Demo" class="second">
+                        <img src="./images/iphone (1).png" alt="Demo" class="first">
+                    </div>
+                    <div class="about_us_right_side tag">
+                        <h1>Stop wasting your time paying for parking at machines</h1>
+                        <p>Say goodbye to the frustrations of traditional parking methods. Our app is designed to make your parking experience effortless and stress-free. Imagine never having to wait in line at a parking machine, fumble for loose change, or worry about running back to extend your parking time. 
+                        </p>
+                        <div></div>
+                        <div class="about_us_cards">
+                            <div class="about_us_card tag">
+                                <img src="./images/wallet.png" alt="wallet">
+                                <p>Secure and seamless payments at your fingertips. track, pay, and save in just a few taps!</p>
+                            </div>
+                            <div class="about_us_card tag">
+                                <img src="./images/car.png" alt="car">
+                                <p>Secure and seamless payments at your fingertips. track, pay, and save in just a few taps!</p>
+                            </div>
+                            <div class="about_us_card tag">
+                                <img src="./images/wallet_black.png" alt="wallet">
+                                <p>Secure and seamless payments at your fingertips. track, pay, and save in just a few taps!</p>
+                            </div>
+                        </div>
+                        <button class="try_our_app standard_button tag">
+                            <span>Try our app</span>
+                            <img src="./images/Vector 19.png" alt="right arrow">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="features block tag" id="features">
+                <div class="first_block tag">
+                    <span>Features</span>
+                </div>
+                <div class="second_block tag">
+                    <h1>Explore Our Powerful Features</h1>
+                </div>
+                <div class="features_main tag">
+                    <div class="features_cards">
+                        <div class="features_card tag">
+                            <img src="./images/🦆 icon _wallet_.png" alt="wallet">
+                            <h2>Cashless Payment</h2>
+                            <p>Secure and convenient in-app payment options—no need for cash or cards. Pay with ease in just a few taps.</p>
+                        </div>
+                        <div class="features_card tag">
+                            <img src="./images/🦆 icon _wallet_.png" alt="wallet">
+                            <h2>Cashless Payment</h2>
+                            <p>Secure and convenient in-app payment options—no need for cash or cards. Pay with ease in just a few taps.</p>
+                        </div>
+                    </div>
+                    <div class="features_center_block tag">
+                        <img src="./images/iphone (3).png" alt="Demo">
+                        <img src="./images/iphone (4).png" alt="Demo">
+                    </div>
+                    <div class="features_cards">
+                        <div class="features_card tag">
+                            <img src="./images/🦆 icon _wallet_.png" alt="wallet">
+                            <h2>Cashless Payment</h2>
+                            <p>Secure and convenient in-app payment options—no need for cash or cards. Pay with ease in just a few taps.</p>
+                        </div>
+                        <div class="features_card tag">
+                            <img src="./images/🦆 icon _wallet_.png" alt="wallet">
+                            <h2>Cashless Payment</h2>
+                            <p>Secure and convenient in-app payment options—no need for cash or cards. Pay with ease in just a few taps.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reviews block tag">
+                <div class="first_block tag">
+                    <span>Reviews</span>
+                </div>
+                <div class="second_block tag">
+                    <h1>What Our Users Are Saying</h1>
+                </div>
+                <div class="reviews_cards">
+                    <div class="reviews_card tag">
+                        <img src="./images/Ellipse 440.png" alt="User">
+                        <h2>Robert Pattison</h2>
+                        <div class="stars">
+                            <img src="./images/star.png" alt="star">
+                            <img src="./images/star.png" alt="star">
+                            <img src="./images/star.png" alt="star">
+                            <img src="./images/star.png" alt="star">
+                            <img src="./images/star.png" alt="star">
+                        </div>
+                        <p>This app has completely changed the way I park! Finding a spot is so easy, and I love being able to pay and extend my time right from my phone. No more rushing back to the car or dealing with machines—just pure convenience. Highly recommend</p>
+                    </div>
+                    <div class="reviews_card tag">
+                        <img src="./images/Ellipse 440.png" alt="User">
+                        <h2>Leonard Zucchini</h2>
+                        <div class="stars">
+                            <img src="./images/star.png" alt="star">
+                            <img src="./images/star.png" alt="star">
+                            <img src="./images/star.png" alt="star">
+                            <img src="./images/star.png" alt="star">
+                            <img src="./images/star.png" alt="star">
+
+                        </div>
+                        <p>This app has completely changed the way I park! Finding a spot is so easy, and I love being able to pay and extend my time right from my phone. No more rushing back to the car or dealing with machines—just pure convenience. Highly recommend</p>
+                    </div>
+                    <div class="reviews_card tag">
+                        <img src="./images/Ellipse 440.png" alt="User">
+                        <h2>John Eggplant</h2>
+                        <div class="stars">
+                            <img src="./images/star.png" alt="star">
+                            <img src="./images/star.png" alt="star">
+                            <img src="./images/star.png" alt="star">
+                            <img src="./images/star.png" alt="star">
+                            <img src="./images/star.png" alt="star">
+
+                        </div>
+                        <p>This app has completely changed the way I park! Finding a spot is so easy, and I love being able to pay and extend my time right from my phone. No more rushing back to the car or dealing with machines—just pure convenience. Highly recommend</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq block tag" id="faq">
+                <div class="first_block tag">
+                    <span>FAQ</span>
+                </div>
+                <div class="second_block tag">
+                    <h1>Frequently Asked Questions</h1>
+                </div>
+                <div class="faq_main tag">
+                    <div class="question">
+                        <button class="question_button">
+                            <div class="left_side">
+                        <div class="active_mark"></div>
+                        <div class="question_query">How do I manage my parking lot with the app?</div>
+                        </div>
+                        <div class="question_greater"> <img src="./images/akar-icons_chevron-right.png" alt=""></div>
+                        </button>
+                        <div class="question_answer hidden">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reprehenderit voluptatibus corporis, dolor, delectus animi hic exercitationem aut sed ducimus architecto sit facilis commodi molestiae facere corrupti aliquam. Architecto, ex.</p>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <button class="question_button">
+                            <div class="left_side">
+                        <div class="active_mark"></div>
+                        <div class="question_query">What is a Payment Gateway?</div>
+                        </div>
+                        <div class="question_greater"> <img src="./images/akar-icons_chevron-right.png" alt=""></div>
+                        </button>
+                        <div class="question_answer hidden">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reprehenderit voluptatibus corporis, dolor, delectus animi hic exercitationem aut sed ducimus architecto sit facilis commodi molestiae facere corrupti aliquam. Architecto, ex.</p>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <button class="question_button">
+                            <div class="left_side">
+                        <div class="active_mark"></div>
+                        <div class="question_query">How secure is the app?</div>
+                        </div>
+                        <div class="question_greater"> <img src="./images/akar-icons_chevron-right.png" alt=""></div>
+                        </button>
+                        <div class="question_answer hidden">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reprehenderit voluptatibus corporis, dolor, delectus animi hic exercitationem aut sed ducimus architecto sit facilis commodi molestiae facere corrupti aliquam. Architecto, ex.</p>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <button class="question_button">
+                        <div class="left_side">
+                        <div class="active_mark"></div>
+                        <div class="question_query">Can I get notification for parking availability?</div>
+                        </div>
+                        <div class="question_greater"> <img src="./images/akar-icons_chevron-right.png" alt=""></div>
+                        </button>
+                        <div class="question_answer hidden">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reprehenderit voluptatibus corporis, dolor, delectus animi hic exercitationem aut sed ducimus architecto sit facilis commodi molestiae facere corrupti aliquam. Architecto, ex.</p>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <button class="question_button">
+                            <div class="left_side">
+                        <div class="active_mark"></div>
+                        <div class="question_query">Is the app compatible with all types of parking lots?</div>
+                        </div>
+                        <div class="question_greater"> <img src="./images/akar-icons_chevron-right.png" alt=""></div>
+                        </button>
+                        <div class="question_answer hidden">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reprehenderit voluptatibus corporis, dolor, delectus animi hic exercitationem aut sed ducimus architecto sit facilis commodi molestiae facere corrupti aliquam. Architecto, ex.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+    </main>
+    <footer>
+        <div class="footer__container tag">
+                <div class="footer_left_side">
+                    <img src="./images/logo_text_white.svg" alt="Logo">
+                    <p>Fryderyka Chopina, Szczecin, Poland 71-450</p>
+                </div>
+                <div class="footer_right_side">
+                    <div class="social">
+                        <h2>Social</h2>
+                        <div class="social_images">
+                            <a href=""><img src="./images/instagram.svg" alt="Instagram"></a>
+                            <a href=""><img src="./images/facebook.svg" alt="Facebook"></a>
+                            <a href=""><img src="./images/twitter.svg" alt="Twitter"></a>             
+                        </div>
+                    </div>
+                    <div class="resources">
+                        <h2>Resources</h2>
+                        <div class="resources_links">
+                        <a>Docs</a>
+                        <a>FAQ</a>
+                        </div>
+                    </div>
+                    <div class="company">
+                        <h2>Company</h2>
+                        <div class="company_links">
+                        <a>Contact</a>
+                        <a>Terms of Service</a>
+                        <a>Privacy POlicy</a>
+                        </div>
+                    </div>
+                </div>
+    </footer>
+</body>
+<script>
+    // JavaScript for toggle functionality
+    const faqQuestions = document.querySelectorAll('.question_button');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.classList.toggle('hidden');
+            const activeMark = question.querySelector('.active_mark');
+        const questionGreater = question.querySelector('.question_greater img');
+        
+        if (activeMark.style.backgroundColor === 'rgb(63, 142, 252)') {
+            activeMark.style.backgroundColor = '';
+        } else {
+            activeMark.style.backgroundColor = '#3F8EFC'; // Change to your desired color
+        }
+
+        // Toggle the rotation of the question_greater img
+        if (questionGreater.style.transform === 'rotate(90deg)') {
+            questionGreater.style.transform = '';
+        } else {
+            questionGreater.style.transform = 'rotate(90deg)';
+        }  
+        });
+    });
+</script>
+
+<script>
+document.addEventListener("scroll", function() {
+  var pageTop = document.documentElement.scrollTop || document.body.scrollTop;
+  var pageBottom = pageTop + window.innerHeight;
+  var tags = document.querySelectorAll(".tag");
+
+  tags.forEach(function(tag) {
+    var tagTop = tag.getBoundingClientRect().top + window.scrollY;
+
+    if (tagTop < pageBottom) {
+      tag.classList.add("visible");
+    } else {
+      tag.classList.remove("visible");
+    }
+  });
+});
+
+function scrollToElementWithMargin(elementId, topMargin) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - topMargin;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+        });
+    }
+}
+
+</script>
+</html>

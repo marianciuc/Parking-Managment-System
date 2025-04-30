@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "banned-words.sources.en",
+      "type": "java.lang.String",
+      "description": "Description for banned-words.sources.en."
+    },
+    {
+      "name": "banned-words.sources.ru",
+      "type": "java.lang.String",
+      "description": "Description for banned-words.sources.ru."
+    },
+    {
+      "name": "banned-words.sources.pl",
+      "type": "java.lang.String",
+      "description": "Description for banned-words.sources.pl."
+    },
+    {
+      "name": "banned-words.sources.de",
+      "type": "java.lang.String",
+      "description": "Description for banned-words.sources.de."
+    }
+  ] }

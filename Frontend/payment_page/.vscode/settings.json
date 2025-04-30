@@ -1,0 +1,11 @@
+{
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.root": "/",
+    "liveServer.settings.https": {
+      "enable": false,
+      "cert": "E:/University/ipz/PaymentsPage/certificates/localhost.pem",
+      "key": "E:/University/ipz/PaymentsPage/certificates/localhost.key",
+      "passphrase": "pass"
+    }
+  }
+  

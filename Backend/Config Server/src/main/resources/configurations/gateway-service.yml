@@ -1,0 +1,105 @@
+spring:
+  sleuth:
+    enabled: true
+  zipkin:
+    enabled: true
+    base-url: ${ZIPKIN_BASE_URL:http://zipkin-server:9411}
+  main:
+    web-application-type: reactive
+  jmx:
+    enabled: true
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: ${ALLOWED_ORIGINS:http://localhost:5500,http://localhost:5173,https://localhost:5173,https://marianciuc.works}
+            allowedMethods:
+              - "OPTIONS"
+              - "GET"
+              - "POST"
+              - "PUT"
+              - "PATCH"
+              - "DELETE"
+            allowedHeaders:
+              - "Origin"
+              - "Content-Type"
+              - "Authorization"
+              - "X-Api-Key"
+            allowCredentials: true
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: auth-service
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/v1/security/**,/api/v1/possibilities/**,/api/v1/users/**,/api/v1/api-keys/**,/api/oauth2/**
+        - id: owners-service
+          uri: lb://owners-service
+          predicates:
+            - Path=/api/v1/owners/**
+        - id: parking-service
+          uri: lb://parking-service
+          predicates:
+            - Path=/api/v1/parking/**,/api/v1/tags/**,/api/v1/gates/**
+        - id: vehicle-service
+          uri: lb://vehicle-service
+          predicates:
+            - Path=/api/v1/vehicles/**
+        - id: driver-service
+          uri: lb://driver-service
+          predicates:
+            - Path=/api/v1/drivers/**
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/api/v1/notifications/**
+        - id: reviews-service
+          uri: lb://reviews-service
+          predicates:
+            - Path=/api/v1/reviews/**
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - Path=/api/v1/exchange/**,/api/v1/payments/**,/api/v1/accounts-balance/**,/api/v1/balance/operations/**,/api/v1/bank-accounts/**,/api/v1/session-payments/**,/api/v1/stripe/**,/api/v1/transactions/**,/webhook/**
+        - id: tariffs-service
+          uri: lb://tariffs-service
+          predicates:
+            - Path=/api/v1/tariffs/parking/**
+        - id: session-service
+          uri: lb://session-service
+          predicates:
+            - Path=/api/v1/sessions/**
+        - id: admin-service
+          uri: lb://admin-service
+          predicates:
+            - Path=/api/v1/administrators/**
+
+cors:
+  allowed:
+    origin: ${ALLOWED_ORIGINS:http://localhost:5500,http://localhost:5173,https://localhost:5173,https://marianciuc.works}
+    methods:
+      - "OPTIONS"
+      - "GET"
+      - "POST"
+      - "PUT"
+      - "PATCH"
+      - "DELETE"
+    headers:
+      - "Origin"
+      - "*"
+      - "Content-Type"
+      - "Authorization"
+      - "X-Api-Key"
+feign:
+  hystrix:
+    enabled: true
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"

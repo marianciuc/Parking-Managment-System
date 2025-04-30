@@ -1,0 +1,1 @@
+ALTER TABLE parking ADD COLUMN description VARCHAR(255);

@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: ${SPRING_APPLICATION_NAME:gateway-service}
+  config:
+    import: optional:configserver:${SPRING_CONFIG_SERVER_URL:http://localhost:8888}
+
+server:
+  port: ${SPRING_PORT:8222}

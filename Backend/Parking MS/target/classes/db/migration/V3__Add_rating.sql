@@ -1,0 +1,2 @@
+ALTER TABLE parking ADD COLUMN rating FLOAT DEFAULT 0.0;
+ALTER TABLE parking ADD COLUMN reviews_count INT DEFAULT 0;

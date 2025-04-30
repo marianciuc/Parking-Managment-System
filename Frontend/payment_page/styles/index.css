@@ -1,0 +1,219 @@
+:root {
+  --primary: #0071e3;
+  --primary-dark: #005bb5;
+  --success: #4BB543;
+  --text-dark: #1c1c1e;
+  --text-muted: #6d6d72;
+  --bg-gradient: linear-gradient(179deg, #414040 -32.53%, #3F8EFC 152.46%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  min-height: 100%;
+  min-width: 100%;
+  padding: 20px;
+}
+
+body {
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  background: transparent;
+  color: var(--text-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.main-container {
+  background: #fff;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.5s ease-in 0s 1 normal forwards;
+  padding: 40px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-top: 10px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-label {
+  display: block;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #d1d1d6;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: var(--primary);
+}
+
+.button {
+  background-color: var(--primary);
+  color: white;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: var(--primary-dark);
+}
+
+.session-info {
+  width: 100%;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.session-info .info-item {
+  font-size: 15px;
+  color: var(--text-dark);
+}
+
+.success-page {
+  align-items: center;
+  text-align: center;
+}
+
+.icon-success, .icon-header {
+  font-size: 60px;
+  color: var(--success);
+  margin-bottom: 10px;
+}
+
+.icon-header {
+  font-size: 48px;
+  color: var(--primary);
+}
+
+.icon-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--text-dark);
+  margin-top: 10px;
+}
+
+.icon-footer i {
+  font-size: 20px;
+  color: var(--primary);
+}
+
+.info-text {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.stripe-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#payment-element {
+  padding: 12px;
+  /* border: 1px solid #d1d1d6; */
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.pay-button {
+  background-color: var(--primary);
+  color: white;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.pay-button:hover {
+  background-color: var(--primary-dark);
+}
+
+#confirmPayment {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    padding: 30px 20px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .icon-success, .icon-header {
+    font-size: 48px;
+  }
+}

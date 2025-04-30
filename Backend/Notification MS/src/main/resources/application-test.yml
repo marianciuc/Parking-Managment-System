@@ -1,0 +1,51 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${SPRING_DB_HOST:localhost}:${SPRING_DB_PORT:5432}/notifications_db
+    driver-class-name: org.postgresql.Driver
+    username: ${SPRING_DB_USERNAME:root}
+    password: ${SPRING_DB_PASSWORD:root}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    baseline-description: "init"
+    baseline-version: 0
+    user: ${SPRING_DB_USERNAME:root}
+    password: ${SPRING_DB_PASSWORD:root}
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_HOST:localhost}:${SPRING_KAFKA_PORT:9092}
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: notification-service-group
+      properties:
+        spring.json.type.mapping: |
+          emailVerificationMessage:pl.edu.zut.app.parking.notifications.kafka.messages.EmailVerificationMessage,
+          sessionStartedMessage:pl.edu.zut.app.parking.notifications.kafka.messages.SessionStartedMessage,
+          sessionEndedMessage:pl.edu.zut.app.parking.notifications.kafka.messages.SessionEndedMessage
+  config:
+    import: optional:configserver:${SPRING_CONFIG_SERVER_URL:http://localhost:0000}
+  application:
+    name: ${SPRING_APPLICATION_NAME:notification-service}
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:8025}
+    username:
+    password:
+    properties:
+      mail:
+        smtp:
+        auth: false
+        starttls:
+          enable: false
+        ssl:
+          enable: false
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+server:
+  port: ${SPRING_PORT:8022}

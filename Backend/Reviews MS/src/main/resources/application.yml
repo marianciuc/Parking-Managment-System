@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ${SPRING_APPLICATION_NAME:reviews-service}
+  config:
+    import: optional:configserver:${SPRING_CONFIG_SERVER_URL:http://localhost:8888}
+server:
+  port: ${SPRING_PORT:7018}
+
+banned-words:
+  sources:
+    en: "banned-words/en"
+    ru: "banned-words/ru"
+    pl: "banned-words/pl"
+    de: "banned-words/de"

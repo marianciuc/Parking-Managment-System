@@ -1,0 +1,49 @@
+package pl.edu.zut.app.parking.auth.services.impl;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import pl.edu.zut.app.parking.auth.dto.req.UserRegistrationRequest;
+import pl.edu.zut.app.parking.auth.entities.User;
+import pl.edu.zut.app.parking.auth.enums.UserType;
+import pl.edu.zut.app.parking.auth.kafka.RegistrationUserProducer;
+import pl.edu.zut.app.parking.auth.services.JWTService;
+import pl.edu.zut.app.parking.auth.services.UserRegistrationService;
+import pl.edu.zut.app.parking.auth.services.UserRepositoryService;
+
+/**
+ * Service class for registering new parking owners in the system.
+ */
+@Service
+@Slf4j
+public class ParkingOwnersRegistrationServiceImpl extends UserRegistrationService {
+
+    private final RegistrationUserProducer registrationUserProducer;
+
+
+    /**
+     * Constructor for injecting dependencies.
+     *
+     * @param userRepositoryService Service for repository-related operations.
+     */
+    protected ParkingOwnersRegistrationServiceImpl(UserRepositoryService userRepositoryService, JWTService jwtService, RegistrationUserProducer registrationUserProducer, PasswordEncoder passwordEncoder) {
+        super(userRepositoryService, passwordEncoder, jwtService);
+        this.registrationUserProducer = registrationUserProducer;
+    }
+
+    @Override
+    public void isCanBeCreated(User user) {
+        // No additional checks are required for parking owner registration
+        // TODO: Regional restrictions, parking lot limits, etc.
+    }
+
+    @Override
+    public void setUserType(User user) {
+        user.setUserType(UserType.PARKING_OWNER);
+    }
+
+    @Override
+    public void finishRegister(User user, UserRegistrationRequest request) {
+        registrationUserProducer.sendParkingOwnerRegistrationMessage(user.getId(), user.getEmail());
+    }
+}

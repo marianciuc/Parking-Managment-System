@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Balance Deduction - HandyParking</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #181818;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1DB954;
+            margin-bottom: 20px;
+        }
+        .greeting {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .message {
+            font-size: 16px;
+            color: #b3b3b3;
+            margin-bottom: 20px;
+        }
+        .receipt {
+            background: #282828;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            margin: 20px 0;
+        }
+        .receipt p {
+            margin: 8px 0;
+            font-size: 14px;
+            color: #fff;
+        }
+        .button {
+            display: inline-block;
+            background-color: #1DB954;
+            color: #121212;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .footer {
+            font-size: 12px;
+            color: #b3b3b3;
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="logo">HandyParking</div>
+    <p class="greeting">Transaction Alert</p>
+    <p class="message">A transaction has been made from your HandyParking account balance.</p>
+    <div class="receipt">
+        <p><strong>Transaction ID:</strong> [[${transactionId}]]</p>
+        <p><strong>Amount Deducted:</strong> [[${amount}]] [[${currency}]]</p>
+        <p><strong>Date:</strong>[[${date}]]</p>
+        <p><strong>Purpose:</strong> Parking Session - Downtown Lot</p>
+        <p><strong>Remaining Balance:</strong> [[${balance}]]</p>
+    </div>
+    <p class="message">If you did not authorize this transaction, please contact our support team immediately.</p>
+    <p class="footer">© 2025 HandyParking. All rights reserved.</p>
+</div>
+</body>
+</html>

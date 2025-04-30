@@ -1,0 +1,11 @@
+spring:
+  config:
+    import: optional:configserver:${SPRING_CONFIG_SERVER_URL:http://localhost:8888}
+  application:
+    name: ${SPRING_APPLICATION_NAME:discovery-service}
+  cloud:
+    config:
+      request-connect-timeout: 5000
+      request-read-timeout: 15000
+server:
+  port: 8761

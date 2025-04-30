@@ -1,0 +1,1 @@
+ALTER TABLE gates ADD COLUMN name varchar(200);

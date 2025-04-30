@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking app</title>
+    <!-- <link rel="stylesheet" href="./styles/output.css"/> -->
+    <link rel="stylesheet" href="./styles/owner.css"/>
+    <link rel="icon" type="image/svg+xml" href="./images/logo_black.svg"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+    <header>
+        <div class="header__container">
+        <button class="left_button"><img src="./images/logo_text_black.svg" alt="Logo" srcset=""/></button>
+        <nav>
+            <ul>
+                <li><button onclick="scrollToElementWithMargin('promo','180')">Home</button></li>
+                    <li><button onclick="scrollToElementWithMargin('about','180')">About us</button></li>
+                    <li><button onclick="scrollToElementWithMargin('advantages','180')">Advantages</button></li>
+                    <li><button onclick="scrollToElementWithMargin('faq','180')">FAQ</button></li>
+            </ul>
+        </nav>
+        <button class="right_button">Get Started with Us</button>
+        </div>
+    </header>
+
+    <main>
+<div class="body__container">
+       <div class="promo" id="promo">
+        <h1>Seamless Parking, Simplified</h1>
+        <h1>Discover Our Automated Services</h1>
+        <p>Upgrade your parking experience with cutting-edge technology and unmatched convenience</p>
+        <button><p>Get Started With US</p></button>
+       </div> 
+       <div class="demo">
+            <img src="./images/demo_parking.png" alt="demo"/>
+       </div>
+       <div class="about_us tag" id="about">
+        <div class="about_us_first_block tag" >
+            <p>About us</p>
+            <img src="./images/Vector 2.png" alt="vector2">
+        </div>
+        <div class="about_us_promo tag">
+            <h1>HandyParking is a complete system for parking managment</h1>
+            <p>Discover how out app can transform the way you park</p>
+        </div>
+        <div class="about_us_cards tag">
+            <div class="about_us_card tag">
+                <h2>Many dashboards</h2>
+                <hr>
+                <img src="./images/revenue 1.png" alt="dashboard">
+                <p>Our app provides powerful, intuitive charts and graphs that help parking lot owners track key data in real-time. These analytics empower you to make informed decisions, optimize operations, and improve overall efficiency. Stay in control and enhance your parking management with our comprehensive and user-friendly data visualization tools.</p>
+            </div>
+            <div class="about_us_card tag">
+                <h2>Live tracking</h2>
+                <hr>
+                <img src="./images/revenue 1.png" alt="не ебу что в эти карточки вставить потом придумаем вместе">
+                <p>Stay connected and in control with our live tracking feature. Parking lot owners can monitor real-time data on occupancy, available spaces, and vehicle movements. This feature allows you to instantly respond to changes, optimize parking allocation, and improve the overall experience for your customers. With live tracking, you can ensure smooth operations, reduce wait times, and enhance security by keeping an eye on everything as it happens. </p>
+            </div>
+            <div class="about_us_card tag">
+                <h2>Flexibility</h2>
+                <hr/>
+                <img src="./images/revenue 1.png" alt="flexibility">
+                <p>With our app, everything is easy to manage and update online. Whether it's adjusting pricing, modifying parking layouts, or changing availability settings, all changes can be made instantly through our user-friendly platform. No need for complicated processes or delays—simply log in and update your parking details in real-time. This flexibility ensures that your parking facility is always aligned with your needs and goals, offering a smooth and efficient experience for both owners and customers.</p>
+            </div>
+        </div>
+       </div>
+        <div class="advantages tag" id="advantages">
+            <div class="advantages_first_block tag">
+            <p>Advantages</p>
+            <img src="./images/Vector 2.png" alt="vector2">
+            </div>
+            <div class="advantages_more">
+                <div class="advantages_left_side tag">
+                    <h2>Why HandyParking?</h2>
+                    <p>Choose our parking solution for its unmatched combination of efficiency, ease of use, and advanced features. We provide a comprehensive platform designed to simplify the parking experience for both parking lot owners and drivers.</p>
+                    <div class="wtoto_nado_suda_dobavit"><p>Wtoto nado suda dobavit</p></div>
+                </div>
+                <div class="advantages_right_side">
+                    <div class="advantages_cards">
+                        <div class="advantages_card tag">
+                            <div class="card_comment_user">
+                                <img src="./images/user.svg" alt="Logo">
+                                <p>Customer-Centric</p>
+                            </div>
+                            <p>We prioritize a smooth and stress-free experience for both parking lot owners and drivers, offering solutions that grow with your needs.</p>
+                        </div>
+                        <div class="advantages_card tag">
+                            <div class="card_comment_user">
+                                <img src="./images/user.svg" alt="Logo">
+                                <p>Customer-Centric</p>
+                            </div>
+                            <p>We prioritize a smooth and stress-free experience for both parking lot owners and drivers, offering solutions that grow with your needs.</p>
+                        </div>
+                        <div class="advantages_card tag">
+                            <div class="card_comment_user">
+                                <img src="./images/user.svg" alt="Logo">
+                                <p>Customer-Centric</p>
+                            </div>
+                            <p>We prioritize a smooth and stress-free experience for both parking lot owners and drivers, offering solutions that grow with your needs.</p>
+                        
+                        </div>
+                        <div class="advantages_card tag">
+                            <div class="card_comment_user">
+                                <img src="./images/user.svg" alt="Logo">
+                                <p>Customer-Centric</p>
+                            </div>
+                            <p>We prioritize a smooth and stress-free experience for both parking lot owners and drivers, offering solutions that grow with your needs.</p>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="reviews tag">
+            <div class="rewiews_first_block tag" id="reviews">
+                <p>Reviews</p>
+                <img src="./images/Vector 2.png" alt="vector2">
+            </div>
+            <div class="h1_reviews tag">
+                <p>Our customers about parking managment system</p>
+            </div>
+            <div class="reviews_cards">
+                <div class="reviews_card tag">
+                    <div class="reviews_stars">
+                        <img src="./images/Star 2.png" alt="stars">
+                        <img src="./images/Star 2.png" alt="stars">
+                        <img src="./images/Star 2.png" alt="stars">
+                        <img src="./images/Star 2.png" alt="stars">
+                        <img src="./images/Star 2.png" alt="stars">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id minima maxime corrupti ut! Ratione illo deleniti sapiente nulla amet, nihil placeat blanditiis minima, reprehenderit tempora unde quo! Minima, molestiae aliquam?</p>
+                    <div class="reviews_author">
+                        <div class="review_author_name_company">
+                            <h2>Zeen Rai</h2>
+                            <p>Sharik Company</p>
+                        </div>
+                        <div class="rewiews_author_logo">
+                            <img src="./images/cute-girl-with-long-hair-sunglasses-with-vinous-bag-pants-is-smiling-city-park_197531-620 1.png" alt="Logo">
+                        </div>
+                    </div>
+                </div>
+                    <div class="reviews_card tag">
+                        <div class="reviews_stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id minima maxime corrupti ut! Ratione illo deleniti sapiente nulla amet, nihil placeat blanditiis minima, reprehenderit tempora unde quo! Minima, molestiae aliquam?</p>
+                        <div class="reviews_author">
+                            <div class="review_author_name_company">
+                                <h2>Zeen Rai</h2>
+                                <p>Barbos Company</p>
+                            </div>
+                            <div class="rewiews_author_logo">
+                                <img src="./images/cute-girl-with-long-hair-sunglasses-with-vinous-bag-pants-is-smiling-city-park_197531-620 1.png" alt="Logo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews_card tag">
+                        <div class="reviews_stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id minima maxime corrupti ut! Ratione illo deleniti sapiente nulla amet, nihil placeat blanditiis minima, reprehenderit tempora unde quo! Minima, molestiae aliquam?</p>
+                        <div class="reviews_author">
+                            <div class="review_author_name_company">
+                                <h2>Zeen Rai</h2>
+                                <p>Bobik Company</p>
+                            </div>
+                            <div class="rewiews_author_logo">
+                                <img src="./images/cute-girl-with-long-hair-sunglasses-with-vinous-bag-pants-is-smiling-city-park_197531-620 1.png" alt="Logo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews_card tag">
+                        <div class="reviews_stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                            <img src="./images/Star 2.png" alt="stars">
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id minima maxime corrupti ut! Ratione illo deleniti sapiente nulla amet, nihil placeat blanditiis minima, reprehenderit tempora unde quo! Minima, molestiae aliquam?</p>
+                        <div class="reviews_author">
+                            <div class="review_author_name_company">
+                                <h2>Zeen Rai</h2>
+                                <p>GavGa Company</p>
+                            </div>
+                            <div class="rewiews_author_logo">
+                                <img src="./images/cute-girl-with-long-hair-sunglasses-with-vinous-bag-pants-is-smiling-city-park_197531-620 1.png" alt="Logo">
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="faq tag" id="faq">
+            <div class="faq_promo tag">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq_main tag">
+                <div class="question">
+                    <button class="question_button">
+                        <div class="left_side">
+                    <div class="active_mark"></div>
+                    <div class="question_query">How do I manage my parking lot with the app?</div>
+                    </div>
+                    <div class="question_greater"> <img src="./images/akar-icons_chevron-right.png" alt=""></div>
+                    </button>
+                    <div class="question_answer hidden">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nobis voluptate, deserunt sed sapiente delectus ratione ad quisquam facere at! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, ipsa quibusdam. Autem quo numquam dicta accusamus nihil modi, atque repudiandae recusandae! Eaque dolor modi rem voluptates ipsam possimus eius hic?</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <button class="question_button">
+                        <div class="left_side">
+                    <div class="active_mark"></div>
+                    <div class="question_query">What is a Payment Gateway?</div>
+                    </div>
+                    <div class="question_greater"> <img src="./images/akar-icons_chevron-right.png" alt=""></div>
+                    </button>
+                    <div class="question_answer hidden">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reprehenderit voluptatibus corporis, dolor, delectus animi hic exercitationem aut sed ducimus architecto sit facilis commodi molestiae facere corrupti aliquam. Architecto, ex.</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <button class="question_button">
+                        <div class="left_side">
+                    <div class="active_mark"></div>
+                    <div class="question_query">How secure is the app?</div>
+                    </div>
+                    <div class="question_greater"> <img src="./images/akar-icons_chevron-right.png" alt=""></div>
+                    </button>
+                    <div class="question_answer hidden">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reprehenderit voluptatibus corporis, dolor, delectus animi hic exercitationem aut sed ducimus architecto sit facilis commodi molestiae facere corrupti aliquam. Architecto, ex.</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <button class="question_button">
+                        <div class="left_side">
+                    <div class="active_mark"></div>
+                    <div class="question_query">Can I get notification for parking availability?</div>
+                    </div>
+                    <div class="question_greater"> <img src="./images/akar-icons_chevron-right.png" alt=""></div>
+                    </button>
+                    <div class="question_answer hidden">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reprehenderit voluptatibus corporis, dolor, delectus animi hic exercitationem aut sed ducimus architecto sit facilis commodi molestiae facere corrupti aliquam. Architecto, ex.</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <button class="question_button">
+                        <div class="left_side">
+                    <div class="active_mark"></div>
+                    <div class="question_query">Is the app compatible with all types of parking lots?</div>
+                    </div>
+                    <div class="question_greater"> <img src="./images/akar-icons_chevron-right.png" alt=""></div>
+                    </button>
+                    <div class="question_answer hidden ">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reprehenderit voluptatibus corporis, dolor, delectus animi hic exercitationem aut sed ducimus architecto sit facilis commodi molestiae facere corrupti aliquam. Architecto, ex.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="image_container">
+        <img src="./images/Group 117.png" alt="background" class="back_image">
+        </div>
+    </div>
+</main>
+
+</div>
+<footer>
+<div class="footer__container tag">
+        <div class="footer_left_side">
+            <img src="./images/logo_text_white.svg" alt="Logo">
+            <p>Fryderyka Chopina, Szczecin, Poland 71-450</p>
+        </div>
+        <div class="footer_right_side">
+            <div class="social">
+                <h2>Social</h2>
+                <div class="social_images">
+                <a href=""><img src="./images/instagram.svg" alt="Instagram"></a>
+                <a href=""><img src="./images/facebook.svg" alt="Facebook"></a>
+                <a href=""><img src="./images/twitter.svg" alt="Twitter"></a>            </div>
+            </div>
+            <div class="resources">
+                <h2>Resources</h2>
+                <div class="resources_links">
+                <a>Docs</a>
+                <a>FAQ</a>
+                </div>
+            </div>
+            <div class="company">
+                <h2>Company</h2>
+                <div class="company_links">
+                <a>Contact</a>
+                <a>Terms of Service</a>
+                <a>Privacy POlicy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>  
+<script>
+    // JavaScript for toggle functionality
+    const faqQuestions = document.querySelectorAll('.question_button');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.classList.toggle('hidden');
+            const activeMark = question.querySelector('.active_mark');
+        const questionGreater = question.querySelector('.question_greater img');
+        
+        if (activeMark.style.backgroundColor === 'rgb(63, 142, 252)') {
+            activeMark.style.backgroundColor = '';
+        } else {
+            activeMark.style.backgroundColor = '#3F8EFC'; // Change to your desired color
+        }
+
+        // Toggle the rotation of the question_greater img
+        if (questionGreater.style.transform === 'rotate(90deg)') {
+            questionGreater.style.transform = '';
+        } else {
+            questionGreater.style.transform = 'rotate(90deg)';
+        }  
+        });
+    });
+
+document.addEventListener("scroll", function() {
+  var pageTop = document.documentElement.scrollTop || document.body.scrollTop;
+  var pageBottom = pageTop + window.innerHeight;
+  var tags = document.querySelectorAll(".tag");
+
+  tags.forEach(function(tag) {
+    var tagTop = tag.getBoundingClientRect().top + window.scrollY;
+
+    if (tagTop < pageBottom) {
+      tag.classList.add("visible");
+    } else {
+      tag.classList.remove("visible");
+    }
+  });
+});
+
+function scrollToElementWithMargin(elementId, topMargin) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - topMargin;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+        });
+    }
+}
+</script>
+</body>
+</html>
