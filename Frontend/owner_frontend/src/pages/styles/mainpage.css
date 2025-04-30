@@ -1,0 +1,118 @@
+.slide_button{
+    border-radius: 50%;
+    background-color: #888;
+    padding: 11px 9px;
+    width: 46px;
+    height: 46px;
+    color: #fff;
+
+
+}
+
+.scroll_svg {
+ position: relative;
+    top:-50%;
+}
+
+.main {
+    /*position: relative;*/
+    /*padding: 10px 30px*/
+}
+.main h1{
+    color: #000;
+    font-size: 3vmin;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36px; /* 120% */
+    letter-spacing: -0.225px;
+}
+
+.main h2 {
+    color: #000;
+    font-size:3vmin;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 120% */
+    letter-spacing: -0.225px;
+    margin-top:3vh;
+}
+
+.create_parking {
+    display: inline-flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    background: #2667FF
+
+}
+
+.create_parking:hover {
+    background: rgb(38, 103, 255);
+}
+
+/*.grid_container {*/
+/*        !*display: grid;*!*/
+/*        !*grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));*!*/
+/*        !*gap: 16px; !* Adjust spacing between cards *!*!*/
+/*    display:flex;*/
+/*    justify-content: flex-start;*/
+/*    align-items: flex-start;*/
+/*    flex-wrap: wrap;*/
+/*    width: 100%;*/
+/*    gap: 10px;*/
+/*    margin-bottom: 100px;*/
+
+/*}*/
+
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,  minmax(350px, 1fr)); /* Default: 4 cards per row */
+    gap: 16px;
+    padding: 16px;
+    margin-bottom: 100px;
+
+}
+
+@media (max-width: 1200px) {
+    .container {
+        grid-template-columns: repeat(3, 1fr); /* 3 cards per row for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row for small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        grid-template-columns: 1fr; /* 1 card per row for very small screens */
+    }
+}
+
+.grid_item{
+    flex: 1 1 calc(25% - 16px); /* Adjust 25% for 4 cards per row */
+    min-width: 250px;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.search_create_main_page{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search_create_main_page div {
+    display: flex;
+    justify-content: flex-start;
+    width: 70%;
+    align-items: center;
+    gap: 40px;
+}

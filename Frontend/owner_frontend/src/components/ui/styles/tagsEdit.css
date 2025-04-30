@@ -1,0 +1,20 @@
+
+.edit_tags h3 {
+    color: #18181B;
+
+    /* suble - semibold */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 142.857% */
+}
+
+.edit_tags p {
+    color: #4B5563;
+
+    /* Label */
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}

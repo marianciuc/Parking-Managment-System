@@ -1,0 +1,12 @@
+.tab-background{
+    border-radius: 6px;
+    background: rgba(255, 253, 253, 0.28);
+    backdrop-filter: blur(14px);
+}
+
+.tab-item{
+
+}
+.tab-item-active{
+    background:red;
+}

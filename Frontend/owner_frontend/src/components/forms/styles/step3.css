@@ -1,0 +1,15 @@
+.days  {
+    height: 44px;
+}
+
+.days > label {
+    text-align: left;
+    min-width: 80px;
+    bottom: 50%;
+}
+
+.days > div:first-of-type button, .days > div:first-of-type input {
+    /*background-color: red;*/
+    width: 10px;
+    height: 10px;
+}

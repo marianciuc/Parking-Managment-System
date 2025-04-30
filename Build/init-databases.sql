@@ -1,0 +1,13 @@
+CREATE DATABASE users_db;
+CREATE DATABASE parking_db;
+CREATE DATABASE owners_db;
+CREATE DATABASE vehicles_db;
+CREATE DATABASE drivers_db;
+CREATE DATABASE tariffs_db;
+CREATE DATABASE sessions_db;
+CREATE DATABASE payments_db;
+CREATE DATABASE family_share_db;
+CREATE DATABASE notifications_db;
+CREATE DATABASE orders_db;
+CREATE DATABASE reviews_db;
+CREATE DATABASE administrators_db;

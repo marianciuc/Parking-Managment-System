@@ -1,0 +1,106 @@
+name: parking-app
+services:
+  # Database Services
+  postgres:
+    container_name: postgres-parking-app
+    image: postgres:latest
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_MAX_CONNECTIONS: 400
+    volumes:
+      - ./init-databases.sql:/docker-entrypoint-initdb.d/init-databases.sql
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - parking-app-net
+    restart: always
+
+  pgbouncer:
+    container_name: pgbouncer-parking-app
+    image: edoburu/pgbouncer
+    environment:
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_HOST: postgres
+      POOL_MODE: session
+      MAX_CLIENT_CONN: 400
+      DEFAULT_POOL_SIZE: 20
+    depends_on:
+      - postgres
+    ports:
+      - "6432:6432"
+    networks:
+      - parking-app-net
+
+  redis:
+    container_name: redis-parking-app
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - parking-app-net
+
+  # Messaging Services
+  zookeeper:
+    container_name: zookeeper-parking-app
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "22181:2181"
+    networks:
+      - parking-app-net
+
+  kafka:
+    container_name: kafka-parking-app
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-parking-app:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+    ports:
+      - "9092:9092"
+    restart: always
+    networks:
+      - parking-app-net
+
+  # Observability Services
+  zipkin:
+    container_name: zipkin-parking-app
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - parking-app-net
+
+  # Development Services
+  mailhog:
+    container_name: mailhog-parking-app
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025" # SMTP server
+      - "8025:8025" # Web interface
+    networks:
+      - parking-app-net
+
+# Volumes
+volumes:
+  postgres-data:
+
+# Networks
+networks:
+  parking-app-net:
+    driver: bridge

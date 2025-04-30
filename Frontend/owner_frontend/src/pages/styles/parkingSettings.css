@@ -1,0 +1,33 @@
+
+.parking_settings_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.parking_settings_header h2 {
+    color: #000;
+    text-align: center;
+
+    /* h2 */
+
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36px; /* 120% */
+    letter-spacing: -0.225px;
+}
+
+.parking_settings_header p {
+    color: #252525;
+    text-align: center;
+
+    /* subtle */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+}

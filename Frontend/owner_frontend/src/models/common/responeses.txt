@@ -1,0 +1,39 @@
+
+
+https://marianciuc.works/api/v1/transactions/stats/account-balance/023c2f2b-377d-4f8c-9c83-1c1fc9a28aa7?convert=true
+{
+    "currentBalance": 0,
+    "blockedAmount": 0,
+    "withdrawnAmount": 0,
+    "currencySymbol": "currency.symbol.usd",
+    "currency": "USD"
+}
+
+
+
+https://marianciuc.works/api/v1/transactions/stats/incomes/days?ownerId=023c2f2b-377d-4f8c-9c83-1c1fc9a28aa7&convert=true&from=2025-03-04T13:21:09.081&to=2025-03-11T13:21:09.081
+
+{
+    "incomesPerDay": {},
+    "totalIncomes": 0,
+    "from": [
+        2025,
+        3,
+        4,
+        13,
+        21,
+        9,
+        81000000
+    ],
+    "to": [
+        2025,
+        3,
+        11,
+        13,
+        21,
+        9,
+        81000000
+    ],
+    "currencySymbol": "[currency.symbol.usd]",
+    "currency": "USD"
+}

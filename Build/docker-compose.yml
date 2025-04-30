@@ -1,0 +1,411 @@
+name: Parking-App
+
+x-shared-env: &shared-env
+  ZIPKIN_URL: http://zipkin
+  SPRING_EUREKA_SERVICE_HOST: discovery-server
+  SPRING_REDIS_HOST: redis
+  SPRING_CONFIG_SERVER_URL: http://config-server:8888
+
+x-shared-db-env: &shared-db-env
+  SPRING_DB_USERNAME: ${POSTGRES_USER}
+  SPRING_DB_PASSWORD: ${POSTGRES_PASSWORD}
+  SPRING_DB_HOST: pgbouncer-parking-app
+  SPRING_DB_PORT: 6432
+
+x-shared-kafka-env: &shared-kafka-env
+  SPRING_KAFKA_HOST: kafka-hp
+
+services:
+  owner-frontend:
+    image: docker.io/vladimirmarianciuc/owner-frontend:1.1
+    container_name: owner-frontend
+    ports:
+      - "5500:80"
+    networks:
+      - parking-app-net
+
+  landings:
+    image: docker.io/vladimirmarianciuc/landings
+    container_name: landings
+    ports:
+      - "8090:80"
+    networks:
+      - parking-app-net
+  
+  payment-page:
+    image: docker.io/vladimirmarianciuc/payment-page
+    container_name: payment-page
+    ports:
+      - "8099:80"
+    networks:
+      - parking-app-net
+    
+  admin-panel:
+    image: docker.io/vladimirmarianciuc/admin-panel:1.1
+    container_name: admin-panel
+    ports:
+      - "5175:3000"
+    networks:
+      - parking-app-net
+
+  configms:
+    image: docker.io/vladimirmarianciuc/configmsa:1.4
+    ports:
+      - "8888:8888"
+    container_name: config-server
+    environment:
+      <<: [*shared-env, *shared-db-env]
+      SPRING_APPLICATION_NAME: config-server
+      SPRING_PORT: 8888
+    networks:
+      - parking-app-net
+
+
+  discoveryms:
+    image: vladimirmarianciuc/discoverya:latest
+    ports:
+      - "8761:8761"
+    container_name: discovery-server
+    environment:
+      <<: *shared-env
+      SPRING_APPLICATION_NAME: discovery-server
+      SPRING_PORT: 8761
+    networks:
+      - parking-app-net
+
+  securityms:
+    image: vladimirmarianciuc/security:latest
+    ports:
+      - "8022:8022"
+    environment:
+      <<: [*shared-env, *shared-db-env, *shared-kafka-env]
+      SPRING_OAUTH2_GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      SPRING_OAUTH2_GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      SPRIG_GATEWAY_HOST: ${GATEWAY_HOST}
+      SPRING_JWT_PRIVATE_KEY: ${SPRING_JWT_PRIVATE_KEY}
+      SPRING_JWT_PUBLIC_KEY: ${SPRING_JWT_PUBLIC_KEY}
+      SPRING_APPLICATION_NAME: auth-service
+      SPRING_PORT: 8022
+    container_name: auth-service
+    depends_on:
+      - discoveryms
+      - redis
+      - configms
+      - postgres
+      - kafka
+      - zipkin
+    networks:
+      - parking-app-net
+
+  adminms:
+    image: vladimirmarianciuc/adminms:latest
+    ports:
+      - "8023:8023"
+    environment:
+      <<: [ *shared-env, *shared-db-env, *shared-kafka-env ]
+      SPRING_APPLICATION_NAME: admin-service
+      SPRING_PORT: 8023
+    container_name: admin-service
+    networks:
+      - parking-app-net
+    depends_on:
+      - discoveryms
+      - redis
+      - configms
+      - postgres
+      - kafka
+      - zipkin
+
+  gateway:
+    image: vladimirmarianciuc/gateway:latest
+    ports:
+      - "8222:8222"
+    environment:
+      <<: *shared-env
+      SPRING_APPLICATION_NAME: gateway-service
+      SPRING_PORT: 8222
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
+    container_name: gateway
+    networks:
+      - parking-app-net
+    depends_on:
+      - discoveryms
+      - redis
+      - configms
+      - zipkin
+      - securityms
+
+  drivers:
+    image: vladimirmarianciuc/drivers:latest
+    ports:
+      - "8033:8033"
+    environment:
+      <<: [ *shared-env, *shared-db-env, *shared-kafka-env ]
+      SPRING_APPLICATION_NAME: driver-service
+      SPRING_PORT: 8033
+    container_name: driver-service
+    networks:
+      - parking-app-net
+    depends_on:
+      - discoveryms
+      - redis
+      - configms
+      - postgres
+      - zipkin
+
+  notificationms:
+    image: vladimirmarianciuc/notifications:latest
+    ports:
+      - "8019:8019"
+    environment:
+      <<: [ *shared-env, *shared-db-env, *shared-kafka-env ]
+      SPRING_APPLICATION_NAME: notification-service
+      SPRING_PORT: 8019
+    container_name: notification-service
+    networks:
+      - parking-app-net
+    depends_on:
+      - discoveryms
+      - redis
+      - configms
+      - postgres
+      - zipkin
+
+  owners:
+    image: vladimirmarianciuc/owners:latest
+    ports:
+      - "7072:7072"
+    environment:
+      <<: [ *shared-env, *shared-db-env, *shared-kafka-env ]
+      SPRING_APPLICATION_NAME: owners-service
+      SPRING_PORT: 8019
+    container_name: owners-service
+    networks:
+      - parking-app-net
+    depends_on:
+      - discoveryms
+      - redis
+      - configms
+      - postgres
+      - zipkin
+
+  parking:
+    image: vladimirmarianciuc/parking:latest
+    ports:
+      - "7022:7022"
+    environment:
+      <<: [ *shared-env, *shared-db-env, *shared-kafka-env ]
+      SPRING_APPLICATION_NAME: parking-service
+      SPRING_PORT: 7022
+    container_name: parking-service
+    networks:
+      - parking-app-net
+    depends_on:
+      - discoveryms
+      - redis
+      - configms
+      - postgres
+      - zipkin
+
+  payments:
+    image: vladimirmarianciuc/payments:1.2
+    ports:
+      - "7009:7009"
+    environment:
+      <<: [ *shared-env, *shared-db-env, *shared-kafka-env ]
+      SPRING_APPLICATION_NAME: payment-service
+      SPRING_PORT: 7009
+      STRIPE_WEBHOOK: ${STRIPE_WEBHOOK}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+      STRIPE_PUBLIC_KEY: ${STRIPE_PUBLIC_KEY}
+      EXCHANGE_APP_ID: ${EXCHANGE_APP_ID}
+    container_name: payment-service
+    networks:
+      - parking-app-net
+    depends_on:
+      - discoveryms
+      - redis
+      - configms
+      - postgres
+      - zipkin
+
+  reviews:
+    image: vladimirmarianciuc/reviews:latest
+    ports:
+      - "7018:7018"
+    environment:
+      <<: [ *shared-env, *shared-db-env, *shared-kafka-env ]
+      SPRING_APPLICATION_NAME: reviews-service
+      SPRING_PORT: 7018
+    container_name: reviews-service
+    networks:
+      - parking-app-net
+    depends_on:
+      - discoveryms
+      - redis
+      - configms
+      - postgres
+      - zipkin
+
+  sessions:
+    image: vladimirmarianciuc/sessions:latest
+    ports:
+      - "7066:7066"
+    environment:
+      <<: [ *shared-env, *shared-db-env, *shared-kafka-env ]
+      SPRING_APPLICATION_NAME: session-service
+      SPRING_PORT: 7066
+    container_name: session-service
+    networks:
+      - parking-app-net
+    depends_on:
+      - discoveryms
+      - redis
+      - configms
+      - postgres
+      - zipkin
+
+  tariffs:
+    image: vladimirmarianciuc/tariffsa:latest
+    ports:
+      - "5060:5060"
+    environment:
+      <<: [ *shared-env, *shared-db-env, *shared-kafka-env ]
+      SPRING_APPLICATION_NAME: tariffs-service
+      SPRING_PORT: 5060
+    container_name: tariffs-service
+    networks:
+      - parking-app-net
+    depends_on:
+      - discoveryms
+      - redis
+      - configms
+      - postgres
+      - zipkin
+
+  vehicles:
+    image: vladimirmarianciuc/vehicles:latest
+    ports:
+      - "5070:5070"
+    environment:
+      <<: [ *shared-env, *shared-db-env, *shared-kafka-env ]
+      SPRING_APPLICATION_NAME: vehicle-service
+      SPRING_PORT: 5070
+    container_name: vehicle-service
+    networks:
+      - parking-app-net
+    depends_on:
+      - discoveryms
+      - redis
+      - configms
+      - postgres
+      - zipkin
+
+  # Redis service
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - parking-app-net
+
+  # Zipkin service
+  zipkin:
+    container_name: zipkin-hp
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - parking-app-net
+
+  # Zookeeper service
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper_parking_app
+    environment:
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "22181:2181"
+    networks:
+      - parking-app-net
+
+  # Kafka service
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka-hp
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_RESTART: always
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-hp:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+    networks:
+      - parking-app-net
+
+  # Postgres
+  postgres:
+    container_name: postgress-database
+    image: postgres:latest
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_MAX_CONNECTIONS: 400
+    volumes:
+      - ./init-databases.sql:/docker-entrypoint-initdb.d/init-databases.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - parking-app-net
+    restart: always
+
+  pgbouncer:
+    container_name: pgbouncer-parking-app
+    image: edoburu/pgbouncer
+    environment:
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_HOST: postgress-database
+      POOL_MODE: session
+      MAX_CLIENT_CONN: 400
+      DEFAULT_POOL_SIZE: 20
+      LISTEN_PORT: 6432
+    volumes:
+      - ./pgbouncer/pgbouncer.ini:/etc/pgbouncer/pgbouncer.ini
+      - ./pgbouncer/userlist.txt:/etc/pgbouncer/userlist.txt
+    depends_on:
+      - postgres
+    ports:
+      - "6432:6432"
+    networks:
+      - parking-app-net
+
+
+  # MailHog service
+  mailhog:
+    container_name: mailhog_parking_app
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025" # SMTP server
+      - "8025:8025" # Web interface
+    networks:
+      - parking-app-net
+
+volumes:
+  postgres:
+
+networks:
+  parking-app-net:
+    driver: bridge
