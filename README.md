@@ -5,7 +5,7 @@
 - Vladimir Marianciuc (vladimir.marianciuc.work@gmail.com) - Backend Developer, Team Lead 
 - Vitalii Natalevych - Frontend Developer
 - Vladyslav Hurko - OKR Implementation Specialist
-- David Hrosh - Mobile Developer
+- Davyd Hrosh - Mobile Developer
 
 ## Project Overview
 
